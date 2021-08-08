@@ -1,11 +1,15 @@
 {
-	"ownerDid": "did:3:kjzl6cwe1jw1491glgg8sbk4uxgzsxb84511xcrh5pryivwfx71ss8cgjwpnvzd",
+	"ownerDid": "did:3:kjzl6cwe1jw148j3rsuw6xd02dy9bi8syxvj4dacguegyaea7vn9gyixmy2j0lj",
 	"definitions": {
-		"trustedIdentity": "kjzl6cwe1jw14a5geaq6bz89fg3mi14l1mxg5cyi3zjkwbqjx7ab6k0apbr5uwd",
-		"trustedIdentitiesList": "kjzl6cwe1jw149r4g0um2v1c6ccf92hwiys3788ceqxm4nl73ab0qeu7p5kmr9t"
+		"trustedIdentity": "kjzl6cwe1jw147knyb0w1hezgl4tg0oby6zfvsy65qwl8y2msa5dsdsujrrsjtf",
+		"trustedIdentitiesList": "kjzl6cwe1jw14aajn8o2d71e89d2zue7f18ju7xqp2jw5bdl3opcfeb9srjqn8n",
+		"BYOFRecord": "kjzl6cwe1jw14bj9th8r88lhgzxkr39gi5wx48p49mar5ai3kcmv2f6ngfn47y8",
+		"BYOFRecordsList": "kjzl6cwe1jw1479w5i5chzlyi04vofc2tjf9fz43dyvehdm4qrx3uia2w10chq1"
 	},
 	"schemas": {
-		"TrustedIdentity": "ceramic://k3y52l7qbv1frxnvntgm7lspintktwxbsudyci3ctst581ry6m3bqjuftg7h0ueps",
-		"TrustedIdentitiesList": "ceramic://k3y52l7qbv1fry153dkleexage4x9rahf3w6yidqkvhuncesg8k1n21vd40j9gge8"
+		"TrustedIdentity": "ceramic://k3y52l7qbv1fryknhz61gqcjw0fl9pk7ljnwtgoahzbpihfidv71alolqmfbjd24g",
+		"TrustedIdentitiesList": "ceramic://k3y52l7qbv1fry4jiuf0uiruhulvbkeq1g1p5b3mddbsnda6alviav011327oqygw",
+		"BYOFRecord": "ceramic://k3y52l7qbv1fry9o93b51m6ol3fflsrvqcu7zjdx65gvjcmsslh1gln8xvat6i0ow",
+		"BYOFRecordsList": "ceramic://k3y52l7qbv1frykx4wmuqz2jl6i5c8nyreqy8r9isy9z2fhz2g0ivcjmvn82f5gjk"
 	}
 }
