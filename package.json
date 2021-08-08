@@ -24,7 +24,9 @@
   "homepage": "https://github.com/twos-complement/2c-byof-dapp-marketplace#readme",
   "dependencies": {
     "3id-did-provider": "^1.1.0",
+    "@3id/connect": "^0.1.6",
     "@ceramicnetwork/core": "^1.2.0",
+    "@ceramicnetwork/stream-tile": "^1.0.7",
     "@ceramicstudio/idx": "^0.12.1",
     "@ceramicstudio/idx-tools": "^0.11.0",
     "next": "^11.0.1",

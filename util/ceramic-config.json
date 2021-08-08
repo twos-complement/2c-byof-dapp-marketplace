@@ -1,9 +1,11 @@
 {
-	"ownerDid": "did:3:kjzl6cwe1jw146b35a1bq55yjokajefx96rsd8cj3fjfey5099cn7h806862r74",
+	"ownerDid": "did:3:kjzl6cwe1jw1491glgg8sbk4uxgzsxb84511xcrh5pryivwfx71ss8cgjwpnvzd",
 	"definitions": {
-		"trustedIdentitiesList": "kjzl6cwe1jw148ujxsjwc184y3wtfldrre2dl8j7iaid1v47xso53zymc5eqk0y"
+		"trustedIdentity": "kjzl6cwe1jw14a5geaq6bz89fg3mi14l1mxg5cyi3zjkwbqjx7ab6k0apbr5uwd",
+		"trustedIdentitiesList": "kjzl6cwe1jw149r4g0um2v1c6ccf92hwiys3788ceqxm4nl73ab0qeu7p5kmr9t"
 	},
 	"schemas": {
-		"TrustedIdentitiesList": "ceramic://k3y52l7qbv1frydcqf1v1km4r8zz3jmtbavvyal3mpup6rtpy94mnz7b7z1w5wfsw"
+		"TrustedIdentity": "ceramic://k3y52l7qbv1frxnvntgm7lspintktwxbsudyci3ctst581ry6m3bqjuftg7h0ueps",
+		"TrustedIdentitiesList": "ceramic://k3y52l7qbv1fry153dkleexage4x9rahf3w6yidqkvhuncesg8k1n21vd40j9gge8"
 	}
 }
