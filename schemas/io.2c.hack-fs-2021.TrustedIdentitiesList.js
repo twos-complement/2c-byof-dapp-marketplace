@@ -3,13 +3,25 @@ const TrustedIdentitiesListSchema = {
   title: 'io.2c.hack-fs-2021.trustedIdentitiesList',
   type: 'object',
   properties: {
-    trustedIdentities: {
+    trustedIdentitiesList: {
       type: 'array',
-      title: 'trustedIdentities',
+      title: 'trustedIdentitiesList',
       items: {
-        type: 'string',
-        title: 'io.2c.hack-fs-2021.trustedIdentitiesList',
+        type: 'object',
+        title: 'io.2c.hack-fs-2021.trustedIdentity',
+        properties: {
+          id: {
+            $ref: '#/definitions/CeramicDocId',
+          },
+        },
       },
+    }
+  },
+  definitions: {
+    CeramicDocId: {
+      type: 'string',
+      pattern: '^ceramic://.+(\\\\?version=.+)?',
+      maxLength: 150,
     },
   },
 }

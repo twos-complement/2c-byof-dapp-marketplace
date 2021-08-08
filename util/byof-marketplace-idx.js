@@ -9,18 +9,17 @@ let idx
 export async function getIdx() {
   if (idx) return idx
 
-  // Permission dialog (auto accept for BYOFMarketplace):
-  function getPermission(request) {
-    return request.payload.paths
-  }
-
   // Create auth provider:
-  const threeId = await ThreeIdProvider.create({ getPermission, seed, ceramic })
+  const threeId = await ThreeIdProvider.create({ getPermission: () => [], seed, ceramic })
   const provider = threeId.getDidProvider()
 
   // Set DID provider for ceramic:
-  //await ceramic.setDIDProvider(provider)
-  //const did = new DID({ provider, resolver })
+  //TODO: FIX:
+  //await ceramic.did.setProvider(provider)
+
+  // Authenticate:
+  //TODO: FIX:
+  //await ceramic.did.authenticate()
 
   // Create (and memoize) idx instance:
   idx = new IDX({
@@ -29,10 +28,8 @@ export async function getIdx() {
   })
 
   // Log meta:
-  console.log('Initialized BYOFMarketplace DID.')
-  console.log(`DID: ${idx.instance.id}`)
-  console.log('Index:')
-  console.log(await idx.instance.getIndex())
+  console.log('Initialized BYOFMarketplace DID: ', idx.instance.id)
+  console.log('Index:', await idx.instance.getIndex())
 
   return idx
 }
