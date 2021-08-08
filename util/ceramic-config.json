@@ -1,0 +1,9 @@
+{
+	"ownerDid": "did:3:kjzl6cwe1jw146b35a1bq55yjokajefx96rsd8cj3fjfey5099cn7h806862r74",
+	"definitions": {
+		"trustedIdentitiesList": "kjzl6cwe1jw148ujxsjwc184y3wtfldrre2dl8j7iaid1v47xso53zymc5eqk0y"
+	},
+	"schemas": {
+		"TrustedIdentitiesList": "ceramic://k3y52l7qbv1frydcqf1v1km4r8zz3jmtbavvyal3mpup6rtpy94mnz7b7z1w5wfsw"
+	}
+}
