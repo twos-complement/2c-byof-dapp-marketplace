@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import Link from 'next/link'
+import TrustedIdentitiesList from '../components/TrustedIdentitiesList'
+import BYOFRecordsList from '../components/BYOFRecordsList'
 import DataSelector from '../components/DataSelector'
-import DappList from '../components/DappList'
 
-const Home = () => {
+const DemoPage = () => {
   return (
     <div>
       <Head>
@@ -11,13 +11,13 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Welcome to BYOF Marketplace</h1>
-        <Link href="/demo"><a>Demo / Admin</a></Link>
+        <h1>Data Demo</h1>
+        <TrustedIdentitiesList />
+        <BYOFRecordsList />
         <DataSelector />
-        <DappList />
       </main>
     </div>
   )
 }
 
-export default Home
+export default DemoPage
