@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import TrustedIdentitiesList from '../components/TrustedIdentitiesList'
 import BYOFRecordsList from '../components/BYOFRecordsList'
+import DataSelector from '../components/DataSelector'
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
         <h1>Welcome to BYOF Marketplace</h1>
         <TrustedIdentitiesList />
         <BYOFRecordsList />
+        <DataSelector />
       </main>
     </div>
   )
