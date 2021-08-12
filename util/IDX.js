@@ -10,7 +10,7 @@ class IDX {
   }
 
   async loadTrustedIdentitiesList() {
-    // Load trustedIdentities list from BYOF Marketplace index:
+    // Load trustedIdentities list:
     const data = await this.instance.get('trustedIdentitiesList')
     if (!data || !data.trustedIdentitiesList) return []
 
@@ -42,7 +42,7 @@ class IDX {
       },
     })
 
-    // Add did to trustedIdentitiesList on IDX:
+    // Add doc to trustedIdentitiesList on IDX:
     const trustedIdentitiesListDoc = await this.instance.set('trustedIdentitiesList', {
       trustedIdentitiesList: [...current, { id: `ceramic://${trustedIdentityDoc.id.toString()}` }]
     })
@@ -50,6 +50,49 @@ class IDX {
     console.log('doc', trustedIdentitiesListDoc)
 
     return trustedIdentitiesListDoc
+  }
+
+  async loadBYOFRecordsList() {
+    // Load BYOFRecord list:
+    const data = await this.instance.get('BYOFRecordsList')
+    if (!data || !data.BYOFRecordsList) return []
+
+    // Load each BYOFRecord:
+    let BYOFRecords = []
+    for (var i=0; i<data.BYOFRecordsList.length; i++) {
+      // Get stream id from doc Ceramic protocol (ceramic://streamID):
+      const streamId = data.BYOFRecordsList[i].id.split('//')[1]
+      const BYOFRecord = await this.ceramic.loadStream(streamId)
+      BYOFRecords.push(BYOFRecord.content.content)
+    }
+    return BYOFRecords
+  }
+
+  async addBYOFRecord({contractAddress, ipfsAddress}) {
+    let current = await this.loadBYOFRecordsList()
+
+    const BYOFRecord = {
+      contractAddress,
+      ipfsAddress,
+    }
+
+    // Create BYOFRecord on Ceramic:
+    const BYOFRecordDoc = await TileDocument.create(this.ceramic, {
+      content: BYOFRecord,
+      metadata: {
+        schema: schemas.BYOFRecord,
+        controllers: [this.instance.id],
+      },
+    })
+
+    // Add doc to BYOFRecordsList on IDX:
+    const BYOFRecordsListDoc = await this.instance.set('BYOFRecordsList', {
+      BYOFRecordsList: [...current, { id: `ceramic://${BYOFRecordDoc.id.toString()}` }]
+    })
+
+    console.log('doc', BYOFRecordsListDoc)
+
+    return BYOFRecordsListDoc
   }
 }
 

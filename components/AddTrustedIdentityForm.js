@@ -1,21 +1,11 @@
-import { useState, useEffect } from 'react'
-import {getIdx} from '../util/user-idx'
+import { useState, useContext } from 'react'
+import IDXContext from './contexts/idx'
 
 const AddTrustedIdentityForm = () => {
 
-  const [loading, setLoading] = useState(true)
-  const [idx, setIdx] = useState()
+  const [loading, setLoading] = useState(false)
   const [did, setDid] = useState('')
-
-  useEffect(() => {
-    async function load() {
-      const idx = await getIdx()
-      setIdx(idx)
-      setLoading(false)
-    }
-
-    load()
-  }, [])
+  const idx = useContext(IDXContext)
 
   if (loading) return <span>Loading...</span>
 
@@ -29,7 +19,7 @@ const AddTrustedIdentityForm = () => {
         setLoading(false)
       }}>
 
-      <input name="trustedIdentity" value={did} onChange={e => setDid(e.target.value)} />
+      <input name="trustedIdentity" value={did} onChange={e => setDid(e.target.value)} placeholder="Trusted DID" />
       <button type="submit">Add</button>
       </form>
     </div>
