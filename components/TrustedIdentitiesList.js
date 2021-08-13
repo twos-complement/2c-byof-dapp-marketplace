@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react'
-import {getIdx} from '../util/user-idx'
+import { useState, useEffect, useContext } from 'react'
+import IDXContext from './contexts/idx'
 
 import AddTrustedIdentityForm from './AddTrustedIdentityForm'
 
 const TrustedIdentitiesList = () => {
 
   const [trustedIdentities, setTrustedIdentities] = useState(null)
+  const idx = useContext(IDXContext)
 
   useEffect(() => {
     async function load() {
-      const idx = await getIdx()
       const data = await idx.loadTrustedIdentitiesList()
       setTrustedIdentities(data)
     }
