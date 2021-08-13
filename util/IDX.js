@@ -2,11 +2,37 @@ import { IDX as _IDX } from '@ceramicstudio/idx'
 import { schemas } from './ceramic-config.json'
 import { TileDocument } from '@ceramicnetwork/stream-tile'
 
+export const TwosComplementList = ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl']
+
 class IDX {
   constructor({ ceramic, aliases }) {
     this.instance = new _IDX({ ceramic, aliases })
     this.ceramic = ceramic
     this.aliases = aliases
+  }
+
+  async loadRecords({trustedIdentities, schemaName}) {
+    // Load each trusted identity:
+    let records = []
+    for (var i=0; i<trustedIdentities.length; i++) {
+      const data = await this.instance.get(schemaName, trustedIdentities[i])
+      if (data) records.push(data)
+    }
+    return records
+  }
+
+  async parseBYOFRecordsLists(BYOFRecordsLists) {
+    const BYOFRecords = []
+    // Each list of records:
+    for (var i=0; i<BYOFRecordsLists.length; i++) {
+      // Each record:
+      for (var j=0; j<BYOFRecordsLists[i].BYOFRecordsList.length; j++) {
+        const streamId = BYOFRecordsLists[i].BYOFRecordsList[j].id.split('//')[1]
+        const BYOFRecord = await this.ceramic.loadStream(streamId)
+        BYOFRecords.push(BYOFRecord.content.content)
+      }
+    }
+    return BYOFRecords
   }
 
   async loadTrustedIdentitiesList() {

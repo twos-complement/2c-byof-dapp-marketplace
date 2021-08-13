@@ -1,7 +1,8 @@
 import Head from 'next/head'
-import TrustedIdentitiesList from '../components/TrustedIdentitiesList'
+import Link from 'next/link'
+import DataSelector from '../components/DataSelector'
+import DappList from '../components/DappList'
 import UserAddress from '../components/UserAddress';
-import BYOFRecordsList from '../components/BYOFRecordsList'
 
 const Home = () => {
   return (
@@ -12,11 +13,10 @@ const Home = () => {
       </Head>
       <main>
         <h1>Welcome to BYOF Marketplace</h1>
-        <TrustedIdentitiesList />
-        <BYOFRecordsList />
-        <br />
-        <h3>Wallet</h3>
         <UserAddress />
+        <Link href="/demo"><a>Demo / Admin</a></Link>
+        <DataSelector />
+        <DappList />
       </main>
     </div>
   )

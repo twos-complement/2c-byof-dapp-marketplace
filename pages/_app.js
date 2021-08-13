@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from '../util/theme'
 import GlobalStyles from '../components/ui/GlobalStyles'
 import withIdx from '../components/hoc/withIdx'
+import withData from '../components/hoc/withData'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -26,4 +27,4 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default withIdx(MyApp)
+export default withIdx(withData(MyApp))
