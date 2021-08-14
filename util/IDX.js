@@ -2,8 +2,11 @@ import { IDX as _IDX } from '@ceramicstudio/idx'
 import { schemas } from './ceramic-config.json'
 import { TileDocument } from '@ceramicnetwork/stream-tile'
 
-export const TwosComplementList = ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl']
-
+export const DEFAULT_TRUSTED_IDENTITIES_LISTS = {
+  TwosComplement: ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl'],
+  Uniswap: ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl'],
+  FWB: ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl']
+}
 class IDX {
   constructor({ ceramic, aliases }) {
     this.instance = new _IDX({ ceramic, aliases })

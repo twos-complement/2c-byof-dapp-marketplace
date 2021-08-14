@@ -1,9 +1,11 @@
 import Head from 'next/head'
+import { ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import theme from '../util/theme'
 import Layout from '../components/Layout'
-import { ThemeProvider } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline';
+import withIdx from '../components/hoc/withIdx'
+import withData from '../components/hoc/withData'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -28,4 +30,4 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp;
+export default withIdx(withData(MyApp));
