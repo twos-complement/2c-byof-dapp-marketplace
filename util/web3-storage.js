@@ -29,9 +29,6 @@ export async function retrieve(cid) {
 
   const files = await res.files()
 
-  //TODO: sync up with publisher team to decide how to show thumbnails or metadata for each cid:
-  console.log(files)
-
   return files
 }
 

@@ -3,7 +3,11 @@ import { schemas } from './ceramic-config.json'
 import { TileDocument } from '@ceramicnetwork/stream-tile'
 
 export const DEFAULT_TRUSTED_IDENTITIES_LISTS = {
-  TwosComplement: ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl'],
+  TwosComplement: [
+    'did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl', // nico
+    'did:3:kjzl6cwe1jw145uv10vi6g93a85o5hbvjq1ls7gnyk2wjn0c87rxur5rehiqyvp', // edder
+    'did:3:kjzl6cwe1jw148tt4a964zmagfw99258p0y6cje8ofgurujhyow1nmf7zc27i9n' // gus
+  ],
   Uniswap: ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl'],
   FWB: ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl']
 }
@@ -30,9 +34,13 @@ class IDX {
     for (var i=0; i<BYOFRecordsLists.length; i++) {
       // Each record:
       for (var j=0; j<BYOFRecordsLists[i].BYOFRecordsList.length; j++) {
-        const streamId = BYOFRecordsLists[i].BYOFRecordsList[j].id.split('//')[1]
-        const BYOFRecord = await this.ceramic.loadStream(streamId)
-        BYOFRecords.push(BYOFRecord.content.content)
+        try {
+          const streamId = BYOFRecordsLists[i].BYOFRecordsList[j].id.split('//')[1]
+          const BYOFRecord = await this.ceramic.loadStream(streamId)
+          BYOFRecords.push(BYOFRecord.content.content)
+        } catch (e) {
+          console.log('Error parsing BYOFRecord List (skipping):', e)
+        }
       }
     }
     return BYOFRecords
@@ -46,10 +54,14 @@ class IDX {
     // Load each trusted identity:
     let trustedIdentities = []
     for (var i=0; i<data.trustedIdentitiesList.length; i++) {
-      // Get stream id from doc Ceramic protocol (ceramic://streamID):
-      const streamId = data.trustedIdentitiesList[i].id.split('//')[1]
-      const trustedIdentity = await this.ceramic.loadStream(streamId)
-      trustedIdentities.push(trustedIdentity.content.content)
+      try {
+        // Get stream id from doc Ceramic protocol (ceramic://streamID):
+        const streamId = data.trustedIdentitiesList[i].id.split('//')[1]
+        const trustedIdentity = await this.ceramic.loadStream(streamId)
+        trustedIdentities.push(trustedIdentity.content.content)
+      } catch (e) {
+        console.log('Error parsing trustedIdentity (skipping):', e)
+      }
     }
     return trustedIdentities
   }
@@ -89,10 +101,14 @@ class IDX {
     // Load each BYOFRecord:
     let BYOFRecords = []
     for (var i=0; i<data.BYOFRecordsList.length; i++) {
-      // Get stream id from doc Ceramic protocol (ceramic://streamID):
-      const streamId = data.BYOFRecordsList[i].id.split('//')[1]
-      const BYOFRecord = await this.ceramic.loadStream(streamId)
-      BYOFRecords.push(BYOFRecord.content.content)
+      try {
+        // Get stream id from doc Ceramic protocol (ceramic://streamID):
+        const streamId = data.BYOFRecordsList[i].id.split('//')[1]
+        const BYOFRecord = await this.ceramic.loadStream(streamId)
+        BYOFRecords.push(BYOFRecord.content.content)
+      } catch (e) {
+        console.log('Error parsing BYOFRecord (skipping):', e)
+      }
     }
     return BYOFRecords
   }
