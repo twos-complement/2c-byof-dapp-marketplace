@@ -1,21 +1,49 @@
 import { createTheme } from "@material-ui/core/styles"
+const colors = {
+  green: '#41D4B0',
+  purple: '#A5A4FF',
+  contrastDarkText: '#100F10',
+  contrastLightText: '#fff',
+  background: '#2B2930', 
+}
 
 const theme = createTheme({
+  colors,
   palette: {
-    mode: "light",
+    type: "dark",
+    background: {
+      default: colors.background,
+    },
     primary: {
-      main: "#fff",
-      contrastText: "#000",
+      main: colors.purple, 
+      contrastText: colors.contrastDarkText, 
     },
     secondary: {
-      light: "#67dcbf",
-      main: "#41D4B0",
-      dark: "#2d947b",
-      contrastText: "#fff",
+      main: colors.green,
+      contrastText: colors.contrastLightText,
     },
+    navbar: {
+      main: colors.contrastDarkText, 
+      contrastText: colors.contrastLightText,
+    },
+    logo: {
+      main: colors.green,
+    }
   },
   typography: {
     fontFamily: "'Work Sans', sans-serif",
+  },
+  overrides: {
+    MuiButton: {
+      root: {
+        borderRadius: 18,
+      }
+    },
+    MuiAppBar: {
+      root: {
+        boxShadow: 'none',
+      }
+    }
   },
 });
 

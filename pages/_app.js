@@ -2,7 +2,8 @@ import Head from 'next/head'
 
 import theme from '../util/theme'
 import Layout from '../components/Layout'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider }from '@emotion/react';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 function MyApp({ Component, pageProps }) {
@@ -18,12 +19,14 @@ function MyApp({ Component, pageProps }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
         />
       </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
+      <MuiThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </MuiThemeProvider>
     </>
   )
 }
