@@ -1,16 +1,11 @@
 import styled from "@emotion/styled";
 import { css } from '@emotion/react';
-import { AppBar, Link, Toolbar as MuiToolbar, Typography } from "@material-ui/core";
+import { AppBar as MuiAppBar, Link, Toolbar as MuiToolbar, Typography } from "@material-ui/core";
 import UserAddress from '../UserAddress';
-import { red } from "@material-ui/core/colors";
+import DataSelector from '../DataSelector';
 
-const Logo = styled.div`
-  ${({ theme }) => css`
-    width: 25px;
-    height: 25px;
-    background-color: ${theme.colors.green};
-    margin-right: 10px;
-  `}
+const AppBar = styled(MuiAppBar)`
+  margin-bottom: 8px;
 `;
 
 const Toolbar = styled(MuiToolbar)`
@@ -19,6 +14,16 @@ const Toolbar = styled(MuiToolbar)`
     color: ${theme.palette.navbar.contrastText};
     display: flex;
     justify-content: space-between;
+    height: 80px;
+  `}
+`;
+
+const Logo = styled.div`
+  ${({ theme }) => css`
+    width: 25px;
+    height: 25px;
+    background-color: ${theme.colors.green};
+    margin-right: 10px;
   `}
 `;
 
@@ -33,6 +38,12 @@ const LogoLink = styled(Link)`
   `};
 `;
 
+const ActionBar = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Navbar = () => (
   <AppBar position='static'>
     <Toolbar>
@@ -42,7 +53,10 @@ const Navbar = () => (
           BYOD Marketplace 
         </Typography>
       </LogoLink>
-      <UserAddress />
+      <ActionBar>
+        <DataSelector />
+        <UserAddress />
+      </ActionBar>
     </Toolbar>
   </AppBar>
 );

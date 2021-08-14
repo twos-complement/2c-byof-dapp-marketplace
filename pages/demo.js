@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import TrustedIdentitiesList from '../components/TrustedIdentitiesList'
 import BYOFRecordsList from '../components/BYOFRecordsList'
-import DataSelector from '../components/DataSelector'
 
 const DemoPage = () => {
   return (
@@ -14,7 +13,6 @@ const DemoPage = () => {
         <h1>Data Demo</h1>
         <TrustedIdentitiesList />
         <BYOFRecordsList />
-        <DataSelector />
       </main>
     </div>
   )
