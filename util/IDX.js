@@ -5,9 +5,12 @@ import { TileDocument } from '@ceramicnetwork/stream-tile'
 export const DEFAULT_TRUSTED_IDENTITIES_LISTS = {
   TwosComplement: [
     'did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl', // nico
+    'did:3:kjzl6cwe1jw145vragmdq2chqkljhzyck3ck0nj4ineydxm08lbg4iqgvq4vqxe', // nico2
+    'did:3:kjzl6cwe1jw147gv3zfr23qsg33ffkjuxq6p67nelsebzl5dnt8lubg22sm2968', // nico3
     'did:3:kjzl6cwe1jw145uv10vi6g93a85o5hbvjq1ls7gnyk2wjn0c87rxur5rehiqyvp', // edder
     'did:3:kjzl6cwe1jw148tt4a964zmagfw99258p0y6cje8ofgurujhyow1nmf7zc27i9n' // gus
   ],
+  // TODO add community lists:
   Uniswap: ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl'],
   FWB: ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl']
 }
@@ -23,6 +26,7 @@ class IDX {
     let records = []
     for (var i=0; i<trustedIdentities.length; i++) {
       const data = await this.instance.get(schemaName, trustedIdentities[i])
+      console.log(`Loading records from ${trustedIdentities[i]}`, data)
       if (data) records.push(data)
     }
     return records
@@ -39,7 +43,7 @@ class IDX {
           const BYOFRecord = await this.ceramic.loadStream(streamId)
           BYOFRecords.push(BYOFRecord.content.content)
         } catch (e) {
-          console.log('Error parsing BYOFRecord List (skipping):', e)
+          //console.log('Error parsing BYOFRecord List (skipping):', e)
         }
       }
     }
@@ -60,7 +64,7 @@ class IDX {
         const trustedIdentity = await this.ceramic.loadStream(streamId)
         trustedIdentities.push(trustedIdentity.content.content)
       } catch (e) {
-        console.log('Error parsing trustedIdentity (skipping):', e)
+        //console.log('Error parsing trustedIdentity (skipping):', e)
       }
     }
     return trustedIdentities
@@ -107,7 +111,7 @@ class IDX {
         const BYOFRecord = await this.ceramic.loadStream(streamId)
         BYOFRecords.push(BYOFRecord.content.content)
       } catch (e) {
-        console.log('Error parsing BYOFRecord (skipping):', e)
+        //console.log('Error parsing BYOFRecord (skipping):', e)
       }
     }
     return BYOFRecords
