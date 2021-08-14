@@ -1,10 +1,9 @@
 import Head from 'next/head'
-import { ThemeProvider } from 'styled-components'
 
 import theme from '../util/theme'
-import GlobalStyles from '../components/ui/GlobalStyles'
-import withIdx from '../components/hoc/withIdx'
-import withData from '../components/hoc/withData'
+import Layout from '../components/Layout'
+import { ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -20,11 +19,13 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <ThemeProvider theme={theme}>
-        <GlobalStyles />
+        <CssBaseline />
+        <Layout>
           <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </>
   )
 }
 
-export default withIdx(withData(MyApp))
+export default MyApp;
