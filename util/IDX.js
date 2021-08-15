@@ -7,6 +7,7 @@ export const DEFAULT_TRUSTED_IDENTITIES_LISTS = {
     'did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl', // nico
     'did:3:kjzl6cwe1jw145vragmdq2chqkljhzyck3ck0nj4ineydxm08lbg4iqgvq4vqxe', // nico2
     'did:3:kjzl6cwe1jw147gv3zfr23qsg33ffkjuxq6p67nelsebzl5dnt8lubg22sm2968', // nico3
+    'did:3:kjzl6cwe1jw1474b9pu7byl190dvub56xdz8trcc5vbuwnx3cxhivoh00ke94s1', // nico4
     'did:3:kjzl6cwe1jw145uv10vi6g93a85o5hbvjq1ls7gnyk2wjn0c87rxur5rehiqyvp', // edder
     'did:3:kjzl6cwe1jw148tt4a964zmagfw99258p0y6cje8ofgurujhyow1nmf7zc27i9n' // gus
   ],

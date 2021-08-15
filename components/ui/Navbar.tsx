@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { css } from '@emotion/react';
 import { AppBar as MuiAppBar, Link, Toolbar as MuiToolbar, Typography } from "@material-ui/core";
+import NextLink from 'next/link'
 import UserAddress from '../UserAddress';
 import DataSelector from '../DataSelector';
 
@@ -54,6 +55,7 @@ const Navbar = () => (
         </Typography>
       </LogoLink>
       <ActionBar>
+        <NextLink href="/demo"><a>Demo / Admin</a></NextLink>
         <DataSelector />
         <UserAddress />
       </ActionBar>

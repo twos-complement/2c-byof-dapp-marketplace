@@ -1,28 +1,30 @@
 import { useState, useEffect } from 'react'
-import { retrieve } from '../util/web3-storage'
+
+import { parseMetadata } from '../util/web3-storage'
 
 const FrontendCard = ({ ipfsAddress, numberOfPeople }) => {
 
-  const [files, setFiles] = useState([])
+  const [name, setName] = useState()
+  const [thumbnail, setThumbnail] = useState()
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function loadData() {
-      const files = await retrieve(ipfsAddress)
-      setFiles(files)
+      const { thumbnail, name } = await parseMetadata(ipfsAddress)
+      setName(name)
+      setThumbnail(`https://ipfs.io/ipfs/${ipfsAddress}/${thumbnail}`)
+      setLoading(false)
     }
 
     loadData()
   }, [])
 
+  if (loading) return <span>Loading...</span>
+
   return (
     <div>
-      <p>{ipfsAddress} - {numberOfPeople} people</p>
-      <h4>Files from cid:</h4>
-      <ul>
-        {files.map(file =>
-          <li key={file.cid}>{file.name}</li>
-        )}
-      </ul>
+      <p>{name} ({ipfsAddress} - {numberOfPeople} people</p>
+      <img src={thumbnail} width={200} />
     </div>
   )
 }

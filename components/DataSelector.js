@@ -16,7 +16,6 @@ const DataSelector = () => {
 
   const [selectedTrustedIdentities, setSelectedTrustedIdentities] = useState(`PERSONAL`)
   const [loading, setLoading] = useState(false)
-  const [records, setRecords] = useState([])
   const idx = useContext(IDXContext)
   const { data, setData } = useContext(DataContext)
 
@@ -35,7 +34,6 @@ const DataSelector = () => {
     const BYOFRecordsLists = await idx.loadRecords({trustedIdentities, schemaName: "BYOFRecordsList"})
     const BYOFRecords = await idx.parseBYOFRecordsLists(BYOFRecordsLists)
     setData({ ...data, BYOFRecords })
-    setRecords(records)
     setLoading(false)
   }
 
