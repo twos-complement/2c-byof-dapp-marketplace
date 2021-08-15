@@ -2,6 +2,7 @@ import { createTheme } from "@material-ui/core/styles"
 const colors = {
   green: '#41D4B0',
   purple: '#A5A4FF',
+  grey: '#312E37',
   contrastDarkText: '#100F10',
   contrastLightText: '#fff',
   background: '#2B2930', 
@@ -19,7 +20,7 @@ const theme = createTheme({
       contrastText: colors.contrastDarkText, 
     },
     secondary: {
-      main: colors.green,
+      main: colors.grey,
       contrastText: colors.contrastLightText,
     },
     navbar: {
@@ -36,7 +37,7 @@ const theme = createTheme({
   overrides: {
     MuiButton: {
       root: {
-        borderRadius: 18,
+        borderRadius: 28,
       }
     },
     MuiAppBar: {
