@@ -6,22 +6,16 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
 
-const LogoSquare = styled.div`
-  ${({ theme }) => css`
-    width: 25px;
-    height: 25px;
-    background-color: ${theme.colors.green};
-    margin-right: 10px;
-  `}
+  span {
+    font-size: 1.5rem;
+  }
 `;
 
 const Brand = () => (
   <Container>
-    <LogoSquare />
     <Typography variant="h6">
-      The Marketplace 
+      <span>🥂</span> BYOF Marketplace 
     </Typography>
   </Container>
 );

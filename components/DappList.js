@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 40px;
   grid-row-gap: 40px;
-  width: 100%;
   padding-top: 80px;
 `
 
@@ -39,7 +38,12 @@ const DappList = () => {
 
   return (
     <Wrapper>
-      {Object.keys(dapps).map(contractAddress => <DappCard contractAddress={contractAddress} ipfsAddresses={dapps[contractAddress]} key={contractAddress} />)}
+      {Object.keys(dapps).map(contractAddress =>
+        <DappCard
+          contractAddress={contractAddress}
+          ipfsAddresses={dapps[contractAddress]}
+          key={JSON.stringify(dapps[contractAddress])+contractAddress}
+        />)}
     </Wrapper>
   )
 }

@@ -3,7 +3,7 @@ import { schemas } from './ceramic-config.json'
 import { TileDocument } from '@ceramicnetwork/stream-tile'
 
 export const DEFAULT_TRUSTED_IDENTITIES_LISTS = {
-  TwosComplement: [
+  IndieDAO: [
     'did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl', // nico
     'did:3:kjzl6cwe1jw145vragmdq2chqkljhzyck3ck0nj4ineydxm08lbg4iqgvq4vqxe', // nico2
     'did:3:kjzl6cwe1jw147gv3zfr23qsg33ffkjuxq6p67nelsebzl5dnt8lubg22sm2968', // nico3
@@ -16,7 +16,8 @@ export const DEFAULT_TRUSTED_IDENTITIES_LISTS = {
   ],
   // TODO add community lists:
   Uniswap: ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl'],
-  FWB: ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl']
+  FWB: ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl'],
+  HackFS: ['did:3:kjzl6cwe1jw147cod70hyulh9usjabusfp8tw5lz1k8r0q2m0os45av4fvk3ohl'],
 }
 class IDX {
   constructor({ ceramic, aliases }) {

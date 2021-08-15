@@ -34,7 +34,7 @@ const ActionBar = styled.div`
   align-items: center;
 
   > * {
-    padding-left: 20px;
+    padding-left: 30px;
   }
 `;
 
@@ -45,8 +45,9 @@ const Navbar = () => (
         <Brand />
       </LogoLink>
       <ActionBar>
-        <NextLink href="/"><a>Marketplace</a></NextLink>
-        <NextLink href="/demo"><a>Demo / Admin</a></NextLink>
+        <NextLink href="/"><a style={{color: 'white'}}>Marketplace</a></NextLink>
+        <NextLink href="/demo"><a style={{color: 'white'}}>Demo / Admin</a></NextLink>
+        <h1>👛</h1>
         <DataSelector />
         <UserAddress />
       </ActionBar>

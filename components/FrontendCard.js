@@ -33,6 +33,14 @@ const Content = styled.div`
   }
 `
 
+const People = styled.p`
+  font-size: 2rem;
+  font-weight: bold;
+  ${({ theme}) => css`
+    color: ${theme.colors.contrastDarkText};
+  `}
+`
+
 const FrontendCard = ({ ipfsAddress, numberOfPeople }) => {
 
   const [name, setName] = useState()
@@ -62,7 +70,7 @@ const FrontendCard = ({ ipfsAddress, numberOfPeople }) => {
           {name}
         </h2>
         <p>{ipfsAddress}</p>
-        People: {numberOfPeople}
+        <People>People: {numberOfPeople}</People>
       </Content>
     </Wrapper>
   )

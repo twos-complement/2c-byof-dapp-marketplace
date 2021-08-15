@@ -10,7 +10,9 @@ import { DEFAULT_TRUSTED_IDENTITIES_LISTS } from '../util/IDX'
 import IDXContext from './contexts/idx'
 import DataContext from './contexts/data'
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  padding-left: 5px;
+`
 
 const DataSelector = () => {
 
@@ -44,7 +46,7 @@ const DataSelector = () => {
   return (
     <Wrapper>
       <FormControl variant="outlined">
-        <InputLabel id="data-selector-label">Trusted Identities</InputLabel>
+        <InputLabel id="data-selector-label">Data Wallet</InputLabel>
         <Select
           labelId="data-selector-label"
           id="data-selector"

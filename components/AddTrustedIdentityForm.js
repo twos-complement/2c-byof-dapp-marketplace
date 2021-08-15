@@ -1,5 +1,15 @@
 import { useState, useContext } from 'react'
+import TextField from '@material-ui/core/TextField';
+import styled from '@emotion/styled'
+import Button from '@material-ui/core/Button';
+
 import IDXContext from './contexts/idx'
+
+const Inputs = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 10px;
+`
 
 const AddTrustedIdentityForm = () => {
 
@@ -19,8 +29,10 @@ const AddTrustedIdentityForm = () => {
         setLoading(false)
       }}>
 
-      <input name="trustedIdentity" value={did} onChange={e => setDid(e.target.value)} placeholder="Trusted DID" />
-      <button type="submit">Add</button>
+        <Inputs>
+          <TextField variant="outlined" name="trustedIdentity" value={did} onChange={e => setDid(e.target.value)} placeholder="Trusted DID" />
+          <Button variant="contained" type="submit">Add</Button>
+        </Inputs>
       </form>
     </div>
   )
