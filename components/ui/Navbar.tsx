@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { css } from '@emotion/react';
 import { AppBar as MuiAppBar, Link, Toolbar as MuiToolbar, Typography } from "@material-ui/core";
+import NextLink from 'next/link'
 import UserAddress from '../UserAddress';
 import DataSelector from '../DataSelector';
 
@@ -42,6 +43,10 @@ const ActionBar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  > * {
+    padding-left: 20px;
+  }
 `;
 
 const Navbar = () => (
@@ -54,6 +59,8 @@ const Navbar = () => (
         </Typography>
       </LogoLink>
       <ActionBar>
+        <NextLink href="/"><a>Marketplace</a></NextLink>
+        <NextLink href="/demo"><a>Demo / Admin</a></NextLink>
         <DataSelector />
         <UserAddress />
       </ActionBar>

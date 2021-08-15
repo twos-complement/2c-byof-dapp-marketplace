@@ -4,7 +4,7 @@ import DataContext from '../contexts/data'
 
 const withData = WrappedComponent => {
   const DataComponent = props => {
-    const [data, setData] = useState()
+    const [data, setData] = useState({})
 
     return (
       <DataContext.Provider value={{

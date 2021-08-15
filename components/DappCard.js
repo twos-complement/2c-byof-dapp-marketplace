@@ -1,9 +1,49 @@
-import { useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
+import styled from "@emotion/styled";
+import { css } from '@emotion/react';
+import Drawer from '@material-ui/core/Drawer';
 
 import FrontendCard from './FrontendCard'
-import { retrieve } from '../util/web3-storage'
+import { parseMetadata } from '../util/web3-storage'
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+`
+
+const Thumbnail = styled.div`
+  background-image: url(${(props) => props.src});
+  background-size: cover;
+  height: 250px;
+  border-radius: 20px 20px 0 0;
+`
+
+const Content = styled.div`
+  padding: 20px;
+  border-radius: 0 0 20px 20px;
+  margin: 0;
+  ${({ theme}) => css`
+    background-color: ${theme.colors.backgroundLight};
+  `}
+
+  h2 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+`
+
+const SideNav = styled.div`
+  padding: 40px;
+`
 
 const DappCard = ({ contractAddress, ipfsAddresses }) => {
+
+  const [thumbnail, setThumbnail] = useState()
+  const [name, setName] = useState()
+  const [showDrawer, setShowDrawer] = useState(false)
 
   useEffect(() => {
     loadData()
@@ -22,26 +62,36 @@ const DappCard = ({ contractAddress, ipfsAddresses }) => {
 
     // Load IPFS data:
     try {
-      const files = await retrieve(mostPopularCID)
-      const assetManifest = files.find(file => file.name === "asset-manifest.json")
-      const resp = await fetch(`https://ipfs.io/ipfs/${assetManifest.cid}`)
-      const manifestData = await resp.json()
-      console.log(manifestData)
+      const { thumbnail, name } = await parseMetadata(mostPopularCID)
+      setThumbnail(`https://ipfs.io/ipfs/${mostPopularCID}/${thumbnail}`)
+      setName(name)
     } catch (e) {
       console.log('Error loading manifest: ', e)
     }
   }
 
   return (
-    <div>
-      <h1>{contractAddress}</h1>
-      <h2>IPFS Addresses</h2>
-      <ul>
-        {Object.keys(ipfsAddresses).map(ipfsAddress => 
-          <FrontendCard key={ipfsAddress} ipfsAddress={ipfsAddress} numberOfPeople={ipfsAddresses[ipfsAddress]} />
-        )}
-      </ul>
-    </div>
+    <Wrapper>
+      <Wrapper onClick={() => setShowDrawer(true)}>
+        <Thumbnail src={thumbnail} />
+        <Content>
+          <h2>
+            {name}
+          </h2>
+          <p>{contractAddress}</p>
+        </Content>
+      </Wrapper>
+      <Drawer anchor="right" open={showDrawer} onClose={() => setShowDrawer(false)}>
+        <SideNav>
+          {Object.keys(ipfsAddresses).map(ipfsAddress => 
+            <FrontendCard key={ipfsAddress}
+              ipfsAddress={ipfsAddress}
+              numberOfPeople={ipfsAddresses[ipfsAddress]}
+            />
+          )}
+        </SideNav>
+      </Drawer>
+    </Wrapper>
   )
 }
 

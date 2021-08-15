@@ -32,4 +32,14 @@ export async function retrieve(cid) {
   return files
 }
 
+export async function parseMetadata(cid) {
+  const files = await retrieve(cid)
+  console.log(files)
+  const metadata = files.find(file => file.name === "metadata.json")
+  const resp = await fetch(`https://ipfs.io/ipfs/${metadata.cid}`)
+  const data = await resp.json()
+  return data
+}
+
+
 export default {}
