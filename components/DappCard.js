@@ -39,16 +39,11 @@ const SideNav = styled.div`
   padding: 40px;
 `
 
-const CloseButton = styled.h3`
-  cursor: pointer;
-`
-
 const DappCard = ({ contractAddress, ipfsAddresses }) => {
 
   const [thumbnail, setThumbnail] = useState()
   const [name, setName] = useState()
   const [showDrawer, setShowDrawer] = useState(false)
-  console.log('🚀 ~ file: DappCard.js ~ line 51 ~ DappCard ~ showDrawer', showDrawer)
 
   useEffect(() => {
     loadData()
@@ -88,7 +83,6 @@ const DappCard = ({ contractAddress, ipfsAddresses }) => {
       </Wrapper>
       <Drawer anchor="right" open={showDrawer} onClose={() => setShowDrawer(false)}>
         <SideNav>
-          <CloseButton onClick={() => setShowDrawer(false)}>X Close</CloseButton>
           {Object.keys(ipfsAddresses).map(ipfsAddress => 
             <FrontendCard key={ipfsAddress}
               ipfsAddress={ipfsAddress}

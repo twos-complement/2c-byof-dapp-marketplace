@@ -7,7 +7,7 @@ import { parseMetadata } from '../util/web3-storage'
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  cursor: pointer;
+  margin-bottom: 40px;
 `
 
 const Thumbnail = styled.div`
@@ -54,11 +54,14 @@ const FrontendCard = ({ ipfsAddress, numberOfPeople }) => {
 
   return (
     <Wrapper>
-      <Thumbnail src={thumbnail} />
+      <a href={`https://ipfs.io/ipfs/${ipfsAddress}`} target="_blank">
+        <Thumbnail src={thumbnail} />
+      </a>
       <Content>
         <h2>
-          {name} - {ipfsAddress}
+          {name}
         </h2>
+        <p>{ipfsAddress}</p>
         People: {numberOfPeople}
       </Content>
     </Wrapper>
