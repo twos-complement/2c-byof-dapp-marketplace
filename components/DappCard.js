@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import styled from "@emotion/styled";
 import { css } from '@emotion/react';
 import Drawer from '@material-ui/core/Drawer';
@@ -48,6 +48,7 @@ const DappCard = ({ contractAddress, ipfsAddresses }) => {
   const [thumbnail, setThumbnail] = useState()
   const [name, setName] = useState()
   const [showDrawer, setShowDrawer] = useState(false)
+  console.log('🚀 ~ file: DappCard.js ~ line 51 ~ DappCard ~ showDrawer', showDrawer)
 
   useEffect(() => {
     loadData()
@@ -75,15 +76,17 @@ const DappCard = ({ contractAddress, ipfsAddresses }) => {
   }
 
   return (
-    <Wrapper onClick={() => setShowDrawer(true)}>
-      <Thumbnail src={thumbnail} />
-      <Content>
-        <h2>
-          {name}
-        </h2>
-        <p>{contractAddress}</p>
-      </Content>
-      <Drawer anchor="right" open={showDrawer}>
+    <Wrapper>
+      <Wrapper onClick={() => setShowDrawer(true)}>
+        <Thumbnail src={thumbnail} />
+        <Content>
+          <h2>
+            {name}
+          </h2>
+          <p>{contractAddress}</p>
+        </Content>
+      </Wrapper>
+      <Drawer anchor="right" open={showDrawer} onClose={() => setShowDrawer(false)}>
         <SideNav>
           <CloseButton onClick={() => setShowDrawer(false)}>X Close</CloseButton>
           {Object.keys(ipfsAddresses).map(ipfsAddress => 
