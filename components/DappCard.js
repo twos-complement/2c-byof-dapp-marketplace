@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 const Thumbnail = styled.div`
   background-image: url(${(props) => props.src});
   background-size: cover;
-  height: 200px;
+  height: 250px;
   border-radius: 20px 20px 0 0;
 `
 
