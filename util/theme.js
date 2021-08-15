@@ -2,6 +2,7 @@ import { createTheme } from "@material-ui/core/styles"
 const colors = {
   green: '#41D4B0',
   purple: '#A5A4FF',
+  purple100: '#9F8EB6',
   grey: '#312E37',
   contrastDarkText: '#100F10',
   contrastLightText: '#fff',
