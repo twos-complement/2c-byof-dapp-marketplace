@@ -1,6 +1,37 @@
 import { useState, useEffect } from 'react'
+import styled from "@emotion/styled";
+import { css } from '@emotion/react';
 
 import { parseMetadata } from '../util/web3-storage'
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+`
+
+const Thumbnail = styled.div`
+  background-image: url(${(props) => props.src});
+  background-size: cover;
+  height: 200px;
+  border-radius: 20px 20px 0 0;
+`
+
+const Content = styled.div`
+  padding: 20px;
+  border-radius: 0 0 20px 20px;
+  margin: 0;
+  ${({ theme}) => css`
+    background-color: ${theme.colors.backgroundLight};
+  `}
+
+  h2 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+`
 
 const FrontendCard = ({ ipfsAddress, numberOfPeople }) => {
 
@@ -22,10 +53,15 @@ const FrontendCard = ({ ipfsAddress, numberOfPeople }) => {
   if (loading) return <span>Loading...</span>
 
   return (
-    <div>
-      <p>{name} ({ipfsAddress} - {numberOfPeople} people</p>
-      <img src={thumbnail} width={200} />
-    </div>
+    <Wrapper>
+      <Thumbnail src={thumbnail} />
+      <Content>
+        <h2>
+          {name} - {ipfsAddress}
+        </h2>
+        People: {numberOfPeople}
+      </Content>
+    </Wrapper>
   )
 }
 

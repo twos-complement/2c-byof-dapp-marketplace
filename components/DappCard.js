@@ -35,6 +35,14 @@ const Content = styled.div`
   }
 `
 
+const SideNav = styled.div`
+  padding: 40px;
+`
+
+const CloseButton = styled.h3`
+  cursor: pointer;
+`
+
 const DappCard = ({ contractAddress, ipfsAddresses }) => {
 
   const [thumbnail, setThumbnail] = useState()
@@ -75,19 +83,17 @@ const DappCard = ({ contractAddress, ipfsAddresses }) => {
         </h2>
         <p>{contractAddress}</p>
       </Content>
-      <Drawer anchor="right" open={showDrawer} onClose={setShowDrawer(false)}>
-        side stuff
+      <Drawer anchor="right" open={showDrawer}>
+        <SideNav>
+          <CloseButton onClick={() => setShowDrawer(false)}>X Close</CloseButton>
+          {Object.keys(ipfsAddresses).map(ipfsAddress => 
+            <FrontendCard key={ipfsAddress}
+              ipfsAddress={ipfsAddress}
+              numberOfPeople={ipfsAddresses[ipfsAddress]}
+            />
+          )}
+        </SideNav>
       </Drawer>
-      {/**TODO(Nico slide out)
-      <ul>
-        {Object.keys(ipfsAddresses).map(ipfsAddress => 
-          <FrontendCard key={ipfsAddress}
-            ipfsAddress={ipfsAddress}
-            numberOfPeople={ipfsAddresses[ipfsAddress]}
-          />
-        )}
-      </ul>
-      */}
     </Wrapper>
   )
 }
