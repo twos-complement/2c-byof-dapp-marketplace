@@ -4,6 +4,7 @@ import { AppBar as MuiAppBar, Link, Toolbar as MuiToolbar, Typography } from "@m
 import NextLink from 'next/link'
 import UserAddress from '../UserAddress';
 import DataSelector from '../DataSelector';
+import Brand from "./Brand";
 
 const AppBar = styled(MuiAppBar)`
   margin-bottom: 8px;
@@ -19,20 +20,8 @@ const Toolbar = styled(MuiToolbar)`
   `}
 `;
 
-const Logo = styled.div`
-  ${({ theme }) => css`
-    width: 25px;
-    height: 25px;
-    background-color: ${theme.colors.green};
-    margin-right: 10px;
-  `}
-`;
-
 const LogoLink = styled(Link)`
   ${({ theme }) => css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
     a, h6 {
       color: ${theme.colors.contrastLightText};
     }
@@ -53,10 +42,7 @@ const Navbar = () => (
   <AppBar position='static'>
     <Toolbar>
       <LogoLink href='/'>
-        <Logo />
-        <Typography variant="h6">
-          BYOD Marketplace 
-        </Typography>
+        <Brand />
       </LogoLink>
       <ActionBar>
         <NextLink href="/"><a>Marketplace</a></NextLink>

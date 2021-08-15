@@ -4,10 +4,14 @@ import { ThemeProvider } from '@emotion/react';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 import theme from '../util/theme'
 import Layout from '../components/Layout'
-import withIdx from '../components/hoc/withIdx'
-import withData from '../components/hoc/withData'
+import GuestLayout from '../components/GuestLayout'
+import { useRouter } from 'next/dist/client/router';
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  const CurrentLayout = router.pathname.includes('home') ? GuestLayout : Layout; 
+
   return (
     <>
       <Head>
@@ -23,13 +27,13 @@ function MyApp({ Component, pageProps }) {
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Layout>
+          <CurrentLayout>
             <Component {...pageProps} />
-          </Layout>
+          </CurrentLayout>
         </ThemeProvider>
       </MuiThemeProvider>
     </>
   )
 }
 
-export default withIdx(withData(MyApp));
+export default MyApp;

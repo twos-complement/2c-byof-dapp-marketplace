@@ -11,7 +11,6 @@ const providerOptions = {
     package: WalletConnectProvider,
     options: {
       infuraId: INFURA_ID,
-      theme: 'dark',
     },
   },
 };
@@ -26,6 +25,7 @@ export const useWallet = () => {
       network: NETWORK,
       cacheProvider: true,
       providerOptions,
+      theme: 'dark',
     });
   }
 

@@ -22,8 +22,6 @@ const Avatar = styled(MuiAvatar)`
   width: 32px;
 `;
 
-
-
 const UserAddress = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const { web3Provider, address, connect, disconnect } = useWallet();
