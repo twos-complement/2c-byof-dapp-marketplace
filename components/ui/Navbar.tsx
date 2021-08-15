@@ -47,7 +47,7 @@ const ActionBar = styled.div`
 const Navbar = () => (
   <AppBar position='static'>
     <Toolbar>
-      <LogoLink>
+      <LogoLink href='/'>
         <Logo />
         <Typography variant="h6">
           BYOD Marketplace 

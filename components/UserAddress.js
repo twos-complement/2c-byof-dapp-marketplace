@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { Avatar, Typography } from '@material-ui/core';
+import { Avatar as MuiAvatar, Button, Menu, MenuItem } from '@material-ui/core';
+import { useState } from 'react';
 import { useWallet } from "../hooks/useWallet";
 import { maskWallet } from "../util/address";
 
@@ -12,17 +13,50 @@ const Container = styled.div`
   margin: 0 5px 0 5px;
 `;
 
+const WalletText = styled.div`
+  margin-left: 10px;
+`;
+
+const Avatar = styled(MuiAvatar)`
+  height: 32px;
+  width: 32px;
+`;
+
 
 
 const UserAddress = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
   const { web3Provider, address, connect, disconnect } = useWallet();
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.target);
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  }
+
+  const handleDisconnect = () => {
+    disconnect();
+    handleClose();
+  }
+
   return (
     <Container>
-      <Avatar src="//www.gravatar.com/avatar/none?f=y&d=mm" sx={{ with: 40, height: 40 }} />
       {web3Provider && address ? (
-        <button onClick={disconnect}>{ maskWallet(address) }</button>
+        <>
+          <Button aria-controls="wallet-menu" aria-haspopup="true" onClick={handleMenu} variant="contained" color="secondary">
+            <Avatar src="//www.gravatar.com/avatar/none?f=y&d=mm" sizes="xs" />
+            <WalletText>{ maskWallet(address, 3) }</WalletText>
+          </Button>
+          <Menu id="wallet-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
+            <MenuItem onClick={handleDisconnect}>Disconnect</MenuItem>
+          </Menu>
+        </>
       ) : (
-        <button onClick={connect}>Connect Wallet</button>
+        <Button variant="contained" color="secondary" onClick={connect}>
+          Connect Wallet
+        </Button>
       )}
     </Container>
   )
